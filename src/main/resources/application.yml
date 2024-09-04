@@ -1,3 +1,45 @@
+server:
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
 spring:
  application:
   name: chat-sevices
+ datasource:
+  url: jdbc:mysql://localhost:3308/chat_service
+  username: chat_service_user
+  password: 1234
+  driver-class-name: com.mysql.cj.jdbc.Driver
+ jpa:
+   hibernate:
+     ddl-auto: update
+   show-sql: true
+#   open-in-view: false
+ security:
+   oauth2:
+    client:
+     registration:
+      kakao:
+       client-id: 136675666f084ba1afa74c1ab55e659c
+       client-secret: 9CXVHFDhMpDf3RTDf1y7AWQl02IDvO1Q
+       scope:
+         - profile_nickname
+         - account_email
+         - name
+         - gender
+         - birthday
+         - birthyear
+         - phone_number
+       redirect-uri: "http://localhost:8080/login/oauth2/code/kakao"
+       client-name: kakao
+       authorization-grant-type: authorization_code
+       client-authentication-method: client_secret_post
+     provider:
+       kakao:
+        authorization-uri: https://kauth.kakao.com/oauth/authorize
+        token-uri: https://kauth.kakao.com/oauth/token
+        user-info-uri: https://kapi.kakao.com/v2/user/me
+        user-name-attribute: id
+

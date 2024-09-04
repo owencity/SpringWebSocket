@@ -38,7 +38,7 @@ function sendMessage() {
 
   websocket.send(username.value + ":" + message.value);
   message.value = "";
-  console.log("sent: send()");
+  console.log("send: send()");
 }
 
 function showMessage(message) {
